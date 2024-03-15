@@ -22,7 +22,7 @@ public class Client extends Person {
     private UUID clientId;
 
 //@JsonIgnore
-@OneToMany(mappedBy = "client", cascade = CascadeType.ALL) //gere par le champ carforrent dan rents
+@OneToMany(mappedBy = "client", fetch = FetchType.EAGER) //gere par le champ carforrent dan rents
 private List<Rent> rents;
     @OneToMany
     private List<CarForSell> carsForSell;

@@ -38,6 +38,7 @@ public class SecurityConfig {
                                 "/api/cars/for-rent",
                                 "/api/cars/for-rent**",
                                 "/api/cars/for-rent/**",
+                                "/rent/for-rent",
 
                                 "/api/cars/for-rent/{agencyId}**",
                                 "/api/cars/for-rent/{carRentId}**",

@@ -13,9 +13,8 @@ import java.util.UUID;
 @Data
 public class RentRequest {
     private RentId id;
-
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
     private UUID clientId;
     private Long carRentId;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
 }

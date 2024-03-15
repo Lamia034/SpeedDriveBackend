@@ -10,8 +10,11 @@ import java.util.UUID;
 @Data
 @Embeddable
 public class RentId implements Serializable {
+
+
+
     @Column(name = "clientId")
     private UUID clientId;
     @Column(name = "carRentId")
-    private long carRentId;
+    private Long carRentId;
 }

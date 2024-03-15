@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 
 import java.util.Arrays;
 
@@ -28,4 +30,9 @@ public class CorsConfig {//cross origin resource sharing
         urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
         return new CorsFilter(urlBasedCorsConfigurationSource);
     }
+
+//    @Bean
+//    public MultipartResolver multipartResolver() {
+//        return new StandardServletMultipartResolver();
+//    }
 }

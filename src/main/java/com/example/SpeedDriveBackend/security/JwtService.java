@@ -102,6 +102,7 @@ public class JwtService {
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(person.getUsername())
+                .claim("name", person.getName())//i added this line to extract the name in front
                 .claim(idClaimKey, extractIdFromPerson(person))
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 10000 * 60))

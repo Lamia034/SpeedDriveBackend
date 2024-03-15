@@ -8,7 +8,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,13 +22,16 @@ public class CarRentResponse {
     private String make;
     private String model;
     private int manifacturingYear;
-
+//    private MultipartFile imageFile;
+    private String imagePath;
     private fuelType fuel;
     private double rentalPrice;
-//    private AgencyRequest agency;
-    private List<RentRequest> rents;
+//    private AgencyResponse agency;
+
 //    private ClientRequest client;
 
+
+//    private List<RentRequest> rents;
     protected String name;
     protected String email;
 }

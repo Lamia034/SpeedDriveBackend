@@ -1,5 +1,6 @@
 package com.example.SpeedDriveBackend.dtos.response;
 
+import com.example.SpeedDriveBackend.dtos.request.CarRentRequest;
 import com.example.SpeedDriveBackend.entities.CarForRent;
 import com.example.SpeedDriveBackend.entities.CarForSell;
 import com.example.SpeedDriveBackend.enumerations.Role;
