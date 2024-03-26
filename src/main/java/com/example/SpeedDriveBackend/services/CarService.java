@@ -17,11 +17,14 @@ public interface CarService {
 
     List<CarRentResponse> getAllCarsForRent(Pageable pageable);
     List<CarRentResponse> getCarsForRentByAgency(UUID agencyId , Pageable pageable);
+
+
+
 //    CarRentResponse updateCarForRent(Long carRentId, CarRentRequest carRentRequest);
     CarRentResponse updateCarForRent(long carRentId, CarRentRequest carRentRequest);
-    CarSellResponse addCarForSell(CarSellRequest carSellRequest);
+//    CarSellResponse addCarForSell(CarSellRequest carSellRequest);
     CarRentResponse getCarForRentById(Long carRentId);
-boolean deleteCarForRentById(Long carRentId);
+void deleteCarForRentById(Long carRentId);
 
 
 }

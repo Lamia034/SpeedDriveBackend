@@ -32,52 +32,21 @@ public class CarController {
 
 
     @PostMapping("/for-rent")
-        public ResponseEntity<CarRentResponse> addCarForRent(@Valid @RequestBody CarRentRequest carRentRequest) {
+    @PreAuthorize("hasAnyAuthority('AGENCY','CLIENT')")
+    public ResponseEntity<CarRentResponse> addCarForRent(@Valid @RequestBody CarRentRequest carRentRequest) {
             CarRentResponse savedCar = carService.addCarForRent(carRentRequest);
             return new ResponseEntity<>(savedCar, HttpStatus.CREATED);
         }
 
-//    @PostMapping("/for-rent")
-//    public ResponseEntity<CarRentResponse> addCarForRent(@Valid @ModelAttribute CarRentRequest carRentRequest, @RequestParam("imageNew") MultipartFile imageFile) {
-//        CarRentResponse savedCar = carService.addCarForRent(carRentRequest, imageFile);
-//        return new ResponseEntity<>(savedCar, HttpStatus.CREATED);
-//    }
-//    @PostMapping("/for-rent")
-//    public ResponseEntity<CarRentResponse> addCarForRent(@Valid CarRentRequest carRentRequest,
-//                                                         @RequestParam("image") MultipartFile image) {
-//        try {
-//            carRentRequest.setImage(image);
-//            CarRentResponse savedCar = carService.addCarForRent(carRentRequest);
-//            return new ResponseEntity<>(savedCar, HttpStatus.CREATED);
-//        } catch (Exception e) {
-//            throw new RuntimeException("Failed to add car for rent: " + e.getMessage());
-//        }
-//    }
-
-
-//@PostMapping("/for-rent")
-//public ResponseEntity<CarRentResponse> addCarForRent(@RequestParam("image") MultipartFile image,
-//                                                     @Valid @RequestBody CarRentRequest carRentRequest) {
-//    if (!image.isEmpty()) {
-//        MultipartFile imageData = image;
-//        carRentRequest.setImage(imageData);
-//    }
-//
-//    CarRentResponse savedCar = carService.addCarForRent(carRentRequest);
-//    return new ResponseEntity<>(savedCar, HttpStatus.CREATED);
-//}
-
-
         @GetMapping("/for-rent")
-
+    @PreAuthorize("hasAnyAuthority('CLIENT','AGENCY')")
         public List<CarRentResponse> getAllCarsForRent(@RequestParam int page, @RequestParam int size) {
                 Pageable pageable = PageRequest.of(page, size);
                 return carService.getAllCarsForRent(pageable);
-         }
+        }
 
     @GetMapping("/for-rent/{agencyId}")
-//    @PreAuthorize("hasAnyRole('AGENCY')")
-//    @PreAuthorize("hasRole('AGENCY')")
+    @PreAuthorize("hasAnyAuthority('AGENCY','CLIENT')")
     public List<CarRentResponse> getCarsForRentByAgency(@PathVariable UUID agencyId, @RequestParam int page, @RequestParam int size) {
         Pageable pageable = PageRequest.of(page, size);
         return carService.getCarsForRentByAgency(agencyId ,pageable);
@@ -86,6 +55,8 @@ public class CarController {
 
 
     @PutMapping("/for-rent/{carRentId}")
+    @PreAuthorize("hasAuthority('AGENCY')")
+
     public ResponseEntity<CarRentResponse> updateCarForRent(
             @PathVariable Long carRentId,
             @RequestBody CarRentRequest carRentRequest) {
@@ -95,12 +66,15 @@ public class CarController {
     }
 
     @DeleteMapping("/for-rent/{carRentId}")
+    @PreAuthorize("hasAuthority('AGENCY')")
+
     public ResponseEntity<String> deleteCarForRent(@PathVariable Long carRentId) {
         carService.deleteCarForRentById(carRentId);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Car deleted successfully");
     }
 
     @GetMapping("/for-rent/id/{carRentId}")
+    @PreAuthorize("hasAnyAuthority('AGENCY','CLIENT')")
     public ResponseEntity<CarRentResponse> getCarForRentById(@PathVariable Long carRentId) {
         CarRentResponse carRent = carService.getCarForRentById(carRentId);
         return ResponseEntity.ok(carRent);

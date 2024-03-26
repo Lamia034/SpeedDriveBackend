@@ -15,7 +15,7 @@ public abstract class Car implements Serializable {
     protected int manifacturingYear;
     @Enumerated(EnumType.STRING)
     protected fuelType fuel;
-    @Column(name = "image_path")
+    @Column(name = "imagePath")
     private String imagePath;
 //    @Lob
 //    @Column(name = "image", columnDefinition="BLOB")

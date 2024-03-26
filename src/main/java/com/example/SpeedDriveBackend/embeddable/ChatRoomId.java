@@ -2,25 +2,21 @@ package com.example.SpeedDriveBackend.embeddable;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.UUID;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Embeddable
-
-public class RentId implements Serializable {
-
-
+public class ChatRoomId implements Serializable {
 
     @Column(name = "clientId")
     private UUID clientId;
-    @Column(name = "carRentId")
-    private Long carRentId;
-
-    @Override
-    public String toString() {
-        return "RentId [clientId=" + clientId + ", carRentId=" + carRentId + "]";
-    }
+    @Column(name = "agencyId")
+    private UUID agencyId;
 }

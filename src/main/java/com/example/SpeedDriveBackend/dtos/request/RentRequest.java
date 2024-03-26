@@ -5,6 +5,8 @@ import com.example.SpeedDriveBackend.entities.Client;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -15,6 +17,11 @@ public class RentRequest {
     private RentId id;
     private UUID clientId;
     private Long carRentId;
+    @NotNull
+    @FutureOrPresent
     private LocalDateTime startDate;
+    @NotNull
+    @FutureOrPresent
     private LocalDateTime endDate;
+    private UUID agencyId;
 }

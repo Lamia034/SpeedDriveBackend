@@ -38,6 +38,7 @@ public class JwtService {
 
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = extractAllClaims(token);
+        System.out.println(claims);
         return claimsResolver.apply(claims);
     }
 
@@ -99,11 +100,15 @@ public class JwtService {
             claims.put(roleClaimKey, "CLIENT");
         }
 
+        System.out.println("subject: "+ person.getUsername());
+
         return Jwts.builder()
                 .setClaims(claims)
-                .setSubject(person.getUsername())
-                .claim("name", person.getName())//i added this line to extract the name in front
+
+                .setSubject(person.getEmail())
+                .claim("name", person.getName())
                 .claim(idClaimKey, extractIdFromPerson(person))
+                .setIssuer(person.getAuthorities().toString().substring(1, person.getAuthorities().toString().length() - 1))
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 10000 * 60))
                 .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();

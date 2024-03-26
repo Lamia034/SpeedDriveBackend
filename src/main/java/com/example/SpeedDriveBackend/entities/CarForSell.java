@@ -14,7 +14,7 @@ public class CarForSell extends Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long carSellId;
     private double price;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne()
     @JoinColumn(name="agencyId")
     private Agency agency;
 

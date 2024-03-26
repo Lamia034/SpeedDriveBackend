@@ -3,6 +3,7 @@ package com.example.SpeedDriveBackend.dtos.response;
 import com.example.SpeedDriveBackend.dtos.request.CarRentRequest;
 import com.example.SpeedDriveBackend.entities.CarForRent;
 import com.example.SpeedDriveBackend.entities.CarForSell;
+import com.example.SpeedDriveBackend.entities.Rent;
 import com.example.SpeedDriveBackend.enumerations.Role;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.EnumType;
@@ -22,7 +23,8 @@ public class AgencyResponse {
     private Role role;
     private String adress;
 //    @OneToMany(mappedBy = "agency" ,cascade = CascadeType.ALL)
-    private List<CarForRent> CarsForRent;
+    private List<CarForRent> carsForRent;
 //    @OneToMany(mappedBy = "agency" ,cascade = CascadeType.ALL)
-    private List<CarForSell> CarsForSell;
+//    private List<CarForSell> carsForSell;
+    private List<Rent> rents;
 }

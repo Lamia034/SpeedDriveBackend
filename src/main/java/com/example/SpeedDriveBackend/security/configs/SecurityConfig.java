@@ -35,19 +35,28 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/api/login",
                                 "/api/register",
-                                "/api/cars/for-rent",
+//                                "/api/cars/for-rent**",
                                 "/api/cars/for-rent**",
-                                "/api/cars/for-rent/**",
                                 "/rent/for-rent",
-
                                 "/api/cars/for-rent/{agencyId}**",
+                                "/api/cars/for-rent/**",
+
+                                "/rent/{agencyId}**",
+                                "/rent**",
+                                "/rent/by-client/{clientId}**",
+
+                                "/api/chatrooms/{id}",
+
+                                "/api/messages",
+                                "/api/messages/{chatRoomId}",
+
+                                "/api/messages/chatroom/{chatRoomId}",
                                 "/api/cars/for-rent/{carRentId}**",
-
                                 "/api/cars/for-sell"
-
-
                         )
+//                        .hasAuthority("AGENCY")
                         .permitAll()
+//                        .requestMatchers("/api/cars/for-rent**").hasAnyAuthority("AGENCY","CLIENT")
 
                         .anyRequest().authenticated())
 
