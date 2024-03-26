@@ -169,15 +169,6 @@ public class CarServiceImpl implements CarService {
 
 
 
-    //    public CarRentResponse getCarForRentById(Long carRentId) {
-//        try {
-//            Optional<CarForRent> carOptional = carForRentRepository.findById(carRentId);
-//            if (carOptional.isPresent()) {
-//                CarForRent car = carOptional.get();
-//                CarRentResponse responseDto = modelMapper.map(car, CarRentResponse.class);
-//                responseDto.setEmail(car.getAgency().getEmail());
-//                responseDto.setName(car.getAgency().getName());
-//                return responseDto;
 //            } else {
 //                throw new ResourceNotFoundException("Car not found with ID: " + carRentId);
 //            }
