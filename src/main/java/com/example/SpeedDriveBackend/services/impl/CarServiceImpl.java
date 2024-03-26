@@ -165,17 +165,7 @@ public class CarServiceImpl implements CarService {
             throw new RuntimeException("Failed to retrieve car: " + e.getMessage());
         }
     }
-//    @Override
-//    public CarSellResponse addCarForSell(CarSellRequest carSellRequest) {
-//        try {
-//            CarForSell carForSell = modelMapper.map(carSellRequest, CarForSell.class);
-//            CarForSell savedCar = carForSellRepository.save(carForSell);
-//            return modelMapper.map(savedCar, CarSellResponse.class);
-//
-//        } catch (Exception e) {
-//            throw new RuntimeException("Failed to save car: " + e.getMessage());
-//        }
-//    }
+
 
 
 
