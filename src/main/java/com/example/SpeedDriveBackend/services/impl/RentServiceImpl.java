@@ -46,20 +46,7 @@ public class RentServiceImpl implements RentService {
 
         private final ModelMapper modelMapper;
 
-//
-//        @Override
-//        @Transactional
-//        public RentResponse addRent(RentRequest RentRequest) {
-//            try {
-//                Rent rent = modelMapper.map(RentRequest, Rent.class);
-//                Rent saved = rentRepository.save(rent);
-//
-//                return modelMapper.map(saved, RentResponse.class);
-//
-//            } catch (Exception e) {
-//                throw new RuntimeException("Failed to save rent: " + e.getMessage());
-//            }
-//        }
+
 @Override
 @Transactional
 public RentResponse addRent(RentRequest rentRequest) {

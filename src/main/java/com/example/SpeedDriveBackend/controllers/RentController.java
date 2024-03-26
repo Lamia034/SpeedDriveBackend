@@ -57,6 +57,6 @@ public class RentController {
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Rent deleted successfully");
     }
-
+//
 
 }
