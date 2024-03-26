@@ -54,9 +54,7 @@ public class SecurityConfig {
                                 "/api/cars/for-rent/{carRentId}**",
                                 "/api/cars/for-sell"
                         )
-//                        .hasAuthority("AGENCY")
                         .permitAll()
-//                        .requestMatchers("/api/cars/for-rent**").hasAnyAuthority("AGENCY","CLIENT")
 
                         .anyRequest().authenticated())
 
