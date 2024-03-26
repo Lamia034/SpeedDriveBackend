@@ -42,38 +42,7 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     @Transactional
-    //this one is with embedded id! keep it later
-//public MessageResponse sendMessage(MessageRequest messageRequest) {
-//    Message message = modelMapper.map(messageRequest, Message.class);
-//    message.setSent(LocalDateTime.now());
-//
-////    ChatRoomId chatRoomId = messageRequest.getChatRoomId();
-//    UUID clientId = messageRequest.getClientId();
-//    UUID agencyId = messageRequest.getAgencyId();
-//
-//    // Construct the ChatRoomId
-//    ChatRoomId chatRoomId = new ChatRoomId(clientId, agencyId);
-//    // Check if the chat room exists based on the embedded ID
-//    Optional<ChatRoom> optionalChatRoom = chatRoomRepository.findByChatRoomId(chatRoomId);
-//
-//    // If the chat room doesn't exist, create a new one
-//    ChatRoom chatRoom = optionalChatRoom.orElseGet(() -> {
-//        ChatRoom newChatRoom = new ChatRoom();
-//        newChatRoom.setChatRoomId(chatRoomId);
-//        return chatRoomRepository.save(newChatRoom);
-//    });
-//
-//    message.setChatRoom(chatRoom);
-//
-//    // Generate a new message ID if not provided
-//    if (message.getMessageId() == null) {
-//        message.setMessageId(UUID.randomUUID());
-//    }
-//
-//    message = messageRepository.save(message);
-//
-//    return modelMapper.map(message, MessageResponse.class);
-//}
+
     public MessageResponse sendMessage(MessageRequest messageRequest) {
         Message message = modelMapper.map(messageRequest, Message.class);
         message.setSent(LocalDateTime.now());
@@ -100,31 +69,8 @@ public class MessageServiceImpl implements MessageService {
     }
 
 
-//        public Message sendMessage(Message message) {
-//    message.setSent(LocalDateTime.now());
-//
-//    ChatRoom chatRoom = message.getChatRoom();
-//    if (chatRoom == null || !chatRoomRepository.existsById(chatRoom.getChatroomId())) {
-//        chatRoom = new ChatRoom();
-//        chatRoom.setChatroomId(UUID.randomUUID());
-//        chatRoom = chatRoomRepository.save(chatRoom);
-//    }
-//
-//    message.setChatRoom(chatRoom);
-//
-//    if (message.getMessageId() == null) {
-//        message.setMessageId(UUID.randomUUID());
-//    }
-//
-//    return messageRepository.save(message);
-//}
-
 
         @Override
-//        @Transactional
-//        public List<Message> getMessagesByChatRoom(UUID chatRoomId) {
-//            return messageRepository.findByChatRoom_ChatRoomIdOrderBySentDesc(chatRoomId);
-//        }
 
     @Transactional
     public List<MessageResponse> getMessagesByChatRoom(UUID chatRoomId) {
@@ -140,28 +86,7 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     @Transactional
-//    public List<ChatRoomResponse> getChatRoomsById(UUID id) {
-//
-//        try {
-//            List<ChatRoom> senderChatRooms = chatRoomRepository.findBySender(id);
-//            List<ChatRoom> receiverChatRooms = chatRoomRepository.findByReceiver(id);
-//
-//            List<ChatRoom> allChatRooms = new ArrayList<>();
-//            allChatRooms.addAll(senderChatRooms);
-//            allChatRooms.addAll(receiverChatRooms);
-//
-//            List<ChatRoomResponse> responseDtoList = new ArrayList<>();
-//            for (ChatRoom chatRoom : allChatRooms) {
-//                ChatRoomResponse responseDto = modelMapper.map(chatRoom, ChatRoomResponse.class);
-//                responseDtoList.add(responseDto);
-//            }
-//
-//            return responseDtoList;
-//        } catch (Exception e) {
-//            throw new RuntimeException("Failed to retrieve chat rooms by ID: " + e.getMessage());
-//        }
-//
-//    }
+
     public List<ChatRoomResponse> getChatRoomsById(UUID id) {
         try {
             List<ChatRoom> senderChatRooms = chatRoomRepository.findBySender(id);

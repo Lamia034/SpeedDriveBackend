@@ -47,6 +47,6 @@ public class MessageController {
         List<MessageResponse> messages = messageService.getMessagesByChatRoom(chatRoomId);
         return ResponseEntity.ok(messages);
     }
-
+//
 
 }
