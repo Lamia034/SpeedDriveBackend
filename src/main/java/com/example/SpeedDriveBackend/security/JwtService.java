@@ -70,23 +70,7 @@ public class JwtService {
         return createToken(claims, (Person) userDetails);
     }
 
-//    public String createToken(Map<String, Object> claims, Person person) {
-//        String idClaimKey = "";
-//        if (person instanceof Agency) {
-//            idClaimKey = "agencyId";
-//        } else if (person instanceof Client) {
-//            idClaimKey = "clientId";
-//        }
-//
-//        return Jwts.builder()
-//                .setClaims(claims)
-//                .setSubject(person.getUsername())
-//                .claim(idClaimKey, extractIdFromPerson(person))
-//                .setIssuedAt(new Date(System.currentTimeMillis()))
-//                .claim("role", person.getAuthorities())
-//                .setExpiration(new Date(System.currentTimeMillis() + 10000 * 60))
-//                .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
-//    }
+
 
     public String createToken(Map<String, Object> claims, Person person) {
         String idClaimKey = "";
@@ -126,16 +110,18 @@ public class JwtService {
     }
 
 
-    public String extractUserRoleFromToken() {
-        Claims claims = Jwts.parser()
-                .setSigningKey(getSignKey())
-                .parseClaimsJws(getToken())
-                .getBody();
-        return (String) claims.get("role");
-    }
 
     public Key getSignKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET);
         return Keys.hmacShaKeyFor(keyBytes);
     }
+
+
+//    public String extractUserRoleFromToken() {
+//        Claims claims = Jwts.parser()
+//                .setSigningKey(getSignKey())
+//                .parseClaimsJws(getToken())
+//                .getBody();
+//        return (String) claims.get("role");
+//    }
 }

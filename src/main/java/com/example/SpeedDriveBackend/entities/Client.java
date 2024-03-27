@@ -15,8 +15,7 @@ import java.util.UUID;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-//@ToString
-//@Inheritance
+
 public class Client extends Person {
     @Id
     private UUID clientId;
@@ -26,7 +25,7 @@ public class Client extends Person {
 private List<Rent> rents;
 //    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
 //    private List<CarForSell> carsForSell;
-@OneToMany(mappedBy = "client", fetch = FetchType.EAGER)//gere par le champ carforrent dan rents
+@OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
 @JsonIgnore
 private List<ChatRoom> chatRooms;
 
@@ -37,7 +36,7 @@ private List<ChatRoom> chatRooms;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(super.getRole().name())); // Assuming getRole() method exists in Person
+        authorities.add(new SimpleGrantedAuthority(super.getRole().name()));
         return authorities;
     }
 

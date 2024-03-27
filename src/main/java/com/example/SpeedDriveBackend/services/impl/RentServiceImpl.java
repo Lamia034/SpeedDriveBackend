@@ -61,6 +61,14 @@ public RentResponse addRent(RentRequest rentRequest) {
         CarForRent carForRent = carForRentRepository.findById(rentRequest.getCarRentId())
                 .orElseThrow(() -> new ResourceNotFoundException("Car for rent not found."));
 
+        Optional<Rent> startDate = rentRepository.findByStartDate(rentRequest.getStartDate());
+        Optional<Rent> endDate = rentRepository.findByEndDate(rentRequest.getEndDate());
+
+        if( startDate.isPresent()  endDate.isPresent()){
+            return new ResourceUnprocessableException("car can't be rented");
+
+        }
+
         Rent rent = new Rent();
         rent.setId(rentId);
         rent.setAgencyId(rentRequest.getAgencyId());

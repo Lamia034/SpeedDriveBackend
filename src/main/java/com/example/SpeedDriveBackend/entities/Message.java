@@ -16,15 +16,6 @@ public class Message {
     private UUID messageId;
     private String text;
 
-//    @Enumerated(EnumType.STRING)
-//    private Sender sender;
-//
-//    @Enumerated(EnumType.STRING)
-//    private Sender receiver;
-//private UUID clientId;
-//
-//
-//    private UUID agencyId;
     private UUID sender;
     private UUID receiver;
 

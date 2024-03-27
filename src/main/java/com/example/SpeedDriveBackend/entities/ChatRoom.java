@@ -14,8 +14,6 @@ import java.util.UUID;
 @Entity
 public class ChatRoom {
 
-//    @EmbeddedId
-//    private ChatRoomId chatRoomId;
     @Id
 private UUID chatRoomId;
     private UUID sender;

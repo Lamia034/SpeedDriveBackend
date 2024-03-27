@@ -24,6 +24,13 @@ public interface RentRepository extends JpaRepository<Rent, RentId> {
 
     Page<Rent> findByIdClientId(UUID clientId, Pageable pageable);
 
+
+    @Query("select r FROM Rent r WHERE r.startDate = :startDate")
+    Optional<Rent> findByStartDate(@Param("startDate") LocalDateTime startDate);
+
+    @Query("select r FROM Rent r WHERE r.endDate = :endDate")
+    Optional<Rent> findByEndDate(@Param("endDate") LocalDateTime endDate);
+
     Optional<Rent> findById(RentId rentId);
 
     Optional<Rent> findByIdClientIdAndIdCarRentId(UUID clientId, Long carRentId);

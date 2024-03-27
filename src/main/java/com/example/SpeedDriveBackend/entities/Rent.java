@@ -15,7 +15,6 @@ import java.util.UUID;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-//@ToString
 public class Rent {
     @EmbeddedId
     private RentId id;

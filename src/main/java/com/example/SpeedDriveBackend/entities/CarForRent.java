@@ -41,18 +41,5 @@ private UUID agencyId;
     public String toString() {
         return "CarForRent [carRentId=" + carRentId + ", rentalPrice=" + rentalPrice + ", carStatus=" + carStatus + "]";
     }
-//    @OneToMany(mappedBy = "carForRent", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//@JsonIgnore
-//    private List<Rent> rents;
-//
 
-
-    //    @Transient
-//    private String image;
-//
-//    public void setImageFile(MultipartFile imageFile) {
-//        this.imageFile = imageFile;
-//        setImageFile(imageFile != null ? imageFile.getOriginalFilename() : null);
-//    }
-//    @JsonIgnore
 }
